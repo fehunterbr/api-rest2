@@ -5,8 +5,6 @@ import br.com.fiap.api_rest.dto.ClienteRequest;
 import br.com.fiap.api_rest.dto.ClienteResponse;
 import br.com.fiap.api_rest.model.Cliente;
 import br.com.fiap.api_rest.repository.ClienteRepository;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.Link;
@@ -41,10 +39,10 @@ public class ClienteService {
 
 
 
-    public ClienteResponse clienteToResponse(Cliente cliente) {
+    public ClienteResponse clienteToResponse(Cliente cliente, boolean self) {
         Link link;
         if (self) {
-            linkTo = linkTO(
+            link = linkTO(
                     methodOn()
             )
         }
